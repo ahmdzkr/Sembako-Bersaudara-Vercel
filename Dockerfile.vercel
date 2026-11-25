@@ -1,0 +1,23 @@
+FROM dunglas/frankenphp:1-php8.2
+
+WORKDIR /app
+
+RUN install-php-extensions \
+    pdo_mysql \
+    curl \
+    mbstring \
+    opcache \
+    redis \
+    && cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+COPY . /app
+
+COPY certs/tidb-ca.pem /etc/ssl/certs/tidb-ca.pem
+
+COPY Caddyfile /etc/frankenphp/Caddyfile
+
+ENV APP_ENV=production
+
+EXPOSE 80
+
+CMD ["frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile"]

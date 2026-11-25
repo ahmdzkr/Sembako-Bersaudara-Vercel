@@ -1,0 +1,12 @@
+.env
+.env.*
+.git
+.git/**
+.gitignore
+*.sql
+migrasi_gambar_lama.php
+cek_curl.php
+
+# File upload lokal
+/assets/uploads/*
+!/assets/uploads/.htaccess

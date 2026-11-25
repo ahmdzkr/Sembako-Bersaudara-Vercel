@@ -1,0 +1,18 @@
+# Environment dan credential
+.env
+.env.*
+!.env.example
+
+# Database dump
+*.sql
+
+# File lokal dan migrasi
+migrasi_gambar_lama.php
+cek_curl.php
+
+# Vercel lokal
+.vercel
+
+# File upload lokal
+/assets/uploads/*
+!/assets/uploads/.htaccess

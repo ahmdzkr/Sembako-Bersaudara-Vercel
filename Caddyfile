@@ -1,0 +1,12 @@
+:{$PORT:80} {
+    root * /app
+    encode gzip
+
+    route {
+        @blocked path /includes /includes/* /.env /.env.* /.git /.git/* /sembako.sql /migrasi_gambar_lama.php /cek_curl.php /Caddyfile /Dockerfile.vercel /.dockerignore /.gitignore /.htaccess /certs /certs/*
+
+        respond @blocked "Not Found" 404
+
+        php_server
+    }
+}
